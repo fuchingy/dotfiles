@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Tools
+alias ll="ls -lh"
+alias repo=~/.fc_dotfiles/repo
+alias mailme="mutt -s 'Job done' fcyangesl@google.com < ~/.jobdone_mail"

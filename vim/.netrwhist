@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/media/Hotspot/fuching_home/project/probing/white_box/arch_option_def'
+let g:netrw_dirhist_2='/media/Hotspot/fuching_home/project/probing/code_gen/instr_def'
+let g:netrw_dirhist_3='/home/fuching/.ssh'
+let g:netrw_dirhist_4='/mnt/user/fuching/project/benchmark_suite/build'
+let g:netrw_dirhist_5='/mnt/user/fuching/project/compass/application/compass_sys'
+let g:netrw_dirhist_6='/mnt/user/fuching/toolbox/codepattern-analysis_dev/prj/linux-gcc'

@@ -1,0 +1,40 @@
+startup_message off # Don't show startup screen.
+
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo screen 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' ti@:te@
+#termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+#defbce "on"  # erase background with current bg color
+#attrcolor b ".I"  # allow bold colors - necessary for some reason
+vbell off
+autodetach on # Detach and preserve screen session when terminal window closes.
+defscrollback 30000
+
+# Bind F11 and F12 (NOT F1 and F2) to previous and next screen window
+bindkey -k F1 prev
+bindkey -k F2 next
+
+# Bind F7 to split, F8 to combine, F10 to switch between windows
+bindkey -k k7 split
+bindkey -k k; focus
+bindkey -k k8 only
+
+escape ^Bb
+
+#hardstatus off #on
+caption always "%-w%{= BW}%n %t%{-}%+w %-= [%C %m-%d-%Y]"
+
+#screen -t bench0 0 
+screen 0
+screen 1
+screen 2
+screen 3
+screen 4 
+screen 5 
+screen 6 
+screen 7 
+screen 8
+screen 9
+
+select 0
+
+shelltitle '$ |task'

@@ -1,0 +1,24 @@
+[user]
+    name = Fu-Ching Yang
+    email = fcyangesl@gmail.com
+
+[alias]
+    co = checkout
+    ci = commit
+    di = diff
+    st = status
+    br = branch
+    re = remote
+    di = diff
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+ 
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+
+[github-import]
+    remote = origin
+
+[merge]
+    tool = vimdiff
