@@ -31,17 +31,12 @@ if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# Set locale
-export LANGUAGE=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
 #Convenient hot key
 #Tool usage
 export EDITOR=vim
-export LANGUAGE=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_MESSAGES=C
+#export LANGUAGE=en
+#export LANG=C
+#export LC_MESSAGES=C
 export BOOST_BUILD_PATH=~/tools/boost-build/
 
 source ~/.git-completion.sh
