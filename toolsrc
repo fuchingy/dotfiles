@@ -1,6 +1,18 @@
 #!/bin/bash
+TOOLBOX_PATH="/home/fuching/toolbox/"
+KIT_PATH="/home/fuching/my_kit/"
+
+# ARM GCC seach path
+#MRVL_LINUX_GCC_64_PATH="${TOOLBOX_PATH}MGCC/release/mgcc-4.8/Marvell_toolchain_201407/armv7-marvell-linux-gnueabihf-hard-4.8.3_x86_64_20140715/bin/"
+#MRVL_EABI_GCC_64_PATH="${TOOLBOX_PATH}MGCC/release/mgcc-4.8/Marvell_toolchain_201407/armv7-marvell-eabihf-hard-4.8.3_x86_64_20140715/bin/"
+#MRVL_LINUX_GCC_PATH="${TOOLBOX_PATH}MGCC/release/mgcc-4.6/Marvell_toolchain_201208/armv7-marvell-linux-gnueabi-hard_i686/bin/"
+#MRVL_EABI_GCC_PATH="${TOOLBOX_PATH}MGCC/release/mgcc-4.6/Marvell_toolchain_201208/armv7-marvell-eabi-hard_i686/bin/"
+#export PATH="$PATH:${MRVL_LINUX_GCC_64_PATH}:${MRVL_EABI_GCC_64_PATH}:${MRVL_LINUX_GCC_PATH}:${MRVL_EABI_GCC_PATH}"
 
 # Tools
 alias ll="ls -lh"
-alias repo=~/.fc_dotfiles/repo
-alias mailme="mutt -s 'Job done' fcyangesl@google.com < ~/.jobdone_mail"
+#alias qemu-system-arm=${TOOLBOX_PATH}qemu-code-pattern/bin/qemu-system-arm
+#alias qemu-arm=${TOOLBOX_PATH}qemu-code-pattern/bin/qemu-arm
+#alias repo=~/.fc_dotfiles/repo
+alias mailme="mutt -s 'Job done' fcyangesl@gmail.com < ~/.jobdone_mail"
+
