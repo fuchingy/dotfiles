@@ -7,3 +7,8 @@ export LSCOLORS=dxfxcxdxbxegedabagacad
 if [ -f "$HOME/.bashrc" ]; then
 . "$HOME/.bashrc"
 fi
+
+# set PATH so it includes toolbox (my private bin)
+if [ -d "$HOME/toolbox" ] ; then
+    PATH="$HOME/toolbox:$PATH"
+fi
