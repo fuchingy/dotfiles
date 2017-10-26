@@ -1,3 +1,7 @@
+#-----This is the original OSX content-----
+export CLICOLOR=1
+export LSCOLORS=dxfxcxdxbxegedabagacad
+#------------------------------------------
 export TERM=xterm-256color
 export TERMCAP=
 
@@ -5,7 +9,7 @@ export TERMCAP=
 export HISTCONTROL=ignoredups
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/bash lesspipe)"
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -22,27 +26,18 @@ fi
 
 unset color_prompt force_color_prompt
 
-# enable color support of ls and also add handy aliases
-if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
-    eval "`dircolors ~/.dir_colors`"
-    alias ls='/bin/ls --color=auto --group-directories-first'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-#Convenient hot key
 #Tool usage
-export EDITOR=vim
+#export EDITOR=vim
 #export LANGUAGE=en
 #export LANG=C
 #export LC_MESSAGES=C
-export BOOST_BUILD_PATH=~/tools/boost-build/
+#export BOOST_BUILD_PATH=~/tools/boost-build/
+
+info_color='\[\e[38;5;41m\]'
+git_color='\[\e[38;5;4m\]'
+reset_color='\[\e[0m\]'
+PS1=${info_color}'\u@[\h:\w] '${git_color}'$(__git_ps1 " (%s)")'${reset_color}'\n[\$]'
 
 source ~/.git-completion.sh
 source ~/.toolsrc
 
-info_color='\e[38;5;41m'
-git_color='\e[38;5;4m'
-reset_color='\e[0m'
-PS1=${info_color}'\u@[\h:\w] '${git_color}'$(__git_ps1 " (%s)")'${reset_color}'\n[\$]'

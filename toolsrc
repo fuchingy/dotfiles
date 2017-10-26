@@ -1,18 +1,109 @@
 #!/bin/bash
-TOOLBOX_PATH="/home/fuching/toolbox/"
-KIT_PATH="/home/fuching/my_kit/"
 
-# ARM GCC seach path
-#MRVL_LINUX_GCC_64_PATH="${TOOLBOX_PATH}MGCC/release/mgcc-4.8/Marvell_toolchain_201407/armv7-marvell-linux-gnueabihf-hard-4.8.3_x86_64_20140715/bin/"
-#MRVL_EABI_GCC_64_PATH="${TOOLBOX_PATH}MGCC/release/mgcc-4.8/Marvell_toolchain_201407/armv7-marvell-eabihf-hard-4.8.3_x86_64_20140715/bin/"
-#MRVL_LINUX_GCC_PATH="${TOOLBOX_PATH}MGCC/release/mgcc-4.6/Marvell_toolchain_201208/armv7-marvell-linux-gnueabi-hard_i686/bin/"
-#MRVL_EABI_GCC_PATH="${TOOLBOX_PATH}MGCC/release/mgcc-4.6/Marvell_toolchain_201208/armv7-marvell-eabi-hard_i686/bin/"
-#export PATH="$PATH:${MRVL_LINUX_GCC_64_PATH}:${MRVL_EABI_GCC_64_PATH}:${MRVL_LINUX_GCC_PATH}:${MRVL_EABI_GCC_PATH}"
+#---------------------------------------------------------------
+# Platform independent setting
+#---------------------------------------------------------------
 
-# Tools
-alias ll="ls -lh"
-#alias qemu-system-arm=${TOOLBOX_PATH}qemu-code-pattern/bin/qemu-system-arm
-#alias qemu-arm=${TOOLBOX_PATH}qemu-code-pattern/bin/qemu-arm
-#alias repo=~/.fc_dotfiles/repo
-alias mailme="mutt -s 'Job done' fcyangesl@gmail.com < ~/.jobdone_mail"
+# enable color support of ls and also add handy aliases
+if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
+    eval "`dircolors ~/.dir_colors -b`"
+    alias ls='/bin/ls --color=auto'
+    alias ll="/bin/ls -lh --color=auto"
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# Perforce setting
+export P4CONFIG=".p4config"
+export P4CLIENT=${USER}
+# Choices
+# SC farms
+export P4PORT="p4hw:2001"
+#export P4PORT="p4sw:2006"
+# HK farms
+#export P4PORT="p4proxy-hk:2001"
+#export P4PORT="p4proxy-hk:2006"
+# Shanghai local machine
+#export P4PORT="p4proxy-zj:2001"
+#export P4PORT="p4proxy-zj:2006"
+
+
+if [ ! -f /etc/hostname ]; then
+#---------------------------------------------------------------
+# SC-FARM dependent setting
+#---------------------------------------------------------------
+    echo "You are in SC-FARM"
+    # Linux generic tool
+    export PATH="/usr/local/bin:$PATH"
+    export PATH="/home/utils/vim-7.4/bin:$PATH"
+    export PATH="/home/utils/tmux-2.4/bin:$PATH"
+
+    # perforce tool
+    export P4EDITOR="/home/utils/vim-7.4/bin/vim"
+    export P4DIFF="/home/utils/mgdiff-1.0-2/bin/mgdiff"
+
+
+elif grep -q "dbcluster\|dgx1\|titanv" /etc/hostname; then
+#---------------------------------------------------------------
+# dbcluster dependent setting
+#---------------------------------------------------------------
+    echo "You are in dbcluter"
+    # Linux generic tool
+    export PATH="/usr/local/bin:$PATH"
+    export PATH="/home/utils/tmux-2.4/bin:$PATH"
+    alias ls='/bin/ls --color=auto --group-directories-first'
+
+    # For Caffe2 build/use
+    #export PATH="/home/fuchingy/fuchingy/toolbox/anaconda3/bin:$PATH"
+    export PATH="/home/scratch.fuchingy_gpu/toolbox/anaconda3/bin:$PATH"
+    export PATH="/home/utils/make-4.2.1/bin/:$PATH"
+    export PATH="/home/utils/gcc-5.3.0/bin:$PATH"
+    export LD_LIBRARY_PATH="/home/utils/gcc-5.3.0/lib:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="/home/utils/gcc-5.3.0/lib64:$LD_LIBRARY_PATH"
+    #export PATH="/home/fuchingy/scratch.fuchingy_gpu/toolbox/caffe2/caffe2.17.09/bin/bin:$PATH"
+    #export PYTHONPATH="/home/fuchingy/scratch.fuchingy_gpu/toolbox/caffe2/caffe2.17.09/bin"
+    #export LD_LIBRARY_PATH="/home/fuchingy/scratch.fuchingy_gpu/toolbox/caffe2/caffe2.17.09/bin/lib:$LD_LIBRARY_PATH"
+    #export LD_LIBRARY_PATH="/home/fuchingy/scratch.fuchingy_gpu/toolbox/caffe2/caffe2.17.09/bin/caffe2/python:$LD_LIBRARY_PATH"
+    export PATH="/home/fuchingy/scratch.fuchingy_gpu/toolbox/caffe2/caffe2.17.10/bin/bin:$PATH"
+    export PYTHONPATH="/home/fuchingy/scratch.fuchingy_gpu/toolbox/caffe2/caffe2.17.10/bin"
+    export LD_LIBRARY_PATH="/home/fuchingy/scratch.fuchingy_gpu/toolbox/caffe2/caffe2.17.10/bin/lib:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="/home/fuchingy/scratch.fuchingy_gpu/toolbox/caffe2/caffe2.17.10/bin/caffe2/python:$LD_LIBRARY_PATH"
+
+    # For APIC
+    #export PATH="/home/fuchingy/scratch.fuchingy_gpu/toolbox/apic/20170920_part_cuda9:$PATH"
+    export PATH="/home/fuchingy/scratch.fuchingy_gpu/toolbox/apic/20171012_cuda9_api:$PATH"
+
+    # For nvprof
+    #export PATH="/home/scratch.tonzhou_gpu/cuda/bin:$PATH"
+    #export LD_LIBRARY_PATH="/home/scratch.tonzhou_gpu/cuda/lib64:$LD_LIBRARY_PATH"
+    export PATH="/home/scratch.fuchingy_gpu/toolbox/cublas/bin/x86_64_Linux_release:$PATH"
+    export PATH="/home/scratch.fuchingy_gpu/toolbox/cuda/bin:$PATH"
+    export LD_LIBRARY_PATH="/home/scratch.fuchingy_gpu/toolbox/cublas/bin/x86_64_Linux_release:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="/home/scratch.fuchingy_gpu/toolbox/cuda/lib64:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="/home/scratch.fuchingy_gpu/toolbox/cudnn/bin/x86_64_Linux_release:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="/home/scratch.fuchingy_gpu/toolbox/nccl/lib64:$LD_LIBRARY_PATH"
+
+    # For cdepx
+    export PATH="/home/utils/sqlite-3.8.6/bin:$PATH"
+    export LD_LIBRARY_PATH="/home/utils/sqlite-3.8.6/lib:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="/home/scratch.fuchingy_gpu/toolbox/jsoncpp/bin/lib:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="/home/utils/boost-1.60.0/lib:$LD_LIBRARY_PATH"
+
+elif grep -q computelab /etc/hostname; then
+#---------------------------------------------------------------
+# computelab dependent setting
+#---------------------------------------------------------------
+    echo "You are in computelab"
+    alias ls='/bin/ls --color=auto --group-directories-first'
+    export PATH="/home/scratch.fuchingy_gpu/toolbox/anaconda3/bin:$PATH"
+    export PYTHONPATH="/home/scratch.fuchingy_gpu/project/caffe2_trace/bin/caffe2.17.09"
+    export LD_LIBRARY_PATH="/home/scratch.fuchingy_gpu/project/caffe2_trace/bin/caffe2.17.09/lib\:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="/home/scratch.fuchingy_gpu/project/caffe2_trace/bin/caffe2.17.09/caffe2/python:$LD_LIBRARY_PATH"
+
+
+
+fi
+
+
 

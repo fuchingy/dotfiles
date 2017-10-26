@@ -22,6 +22,8 @@ Plugin 'chazy/cscope_maps'
 "Plugin 'Valloric/YouCompleteMe'
 "   general lint
 "Plugin 'scrooloose/syntastic'
+"   markdown highlight
+Plugin 'gabrielelana/vim-markdown'
 
 """ Plugin Setting
 nnoremap <silent> <F5> :NERDTreeToggle<CR>
