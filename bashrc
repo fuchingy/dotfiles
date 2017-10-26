@@ -9,7 +9,9 @@ export TERMCAP=
 export HISTCONTROL=ignoredups
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/bash lesspipe)"
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/bash lesspipe)"
+export LESSOPEN=
+
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
