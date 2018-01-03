@@ -93,6 +93,9 @@ set shiftwidth=4
 set softtabstop=4
 " set autoindent
 
+" Fix backspace delete
+set backspace=indent,eol,start
+
 " Layout
 :noremap <F3> :set number! number?<CR>
 
