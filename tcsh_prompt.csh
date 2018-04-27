@@ -7,5 +7,13 @@ set reset_color="%{\033[0m%}"
 # Get git branch name
 setenv GIT_BRANCH_CMD "sh -c 'git branch --no-color 2> /dev/null' | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'"
 
+# Get virtualenv name
+if (! ${?VIRTUAL_ENV}) then 
+    set env_name=""
+else
+    set env_name="<"`basename "$VIRTUAL_ENV"`">"
+endif
+
 # Final output
-set prompt="${info_color}%n@[%m:%~]  ${git_color}`$GIT_BRANCH_CMD` \n${white}["'$'"]${reset_color}"
+set prompt="${info_color}%n@[%m:%~]  ${git_color}`$GIT_BRANCH_CMD`${env_name} \n${white}["'$'"]${reset_color}"
+
