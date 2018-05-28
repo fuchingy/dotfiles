@@ -119,3 +119,11 @@ try
     lang en_US
 catch
 endtry
+
+" Remove arrow key to force hjkl adoption
+inoremap jk <esc>
+nnoremap <Up> <nop>
+nnoremap <Down> <nop>
+nnoremap <Left> <nop>
+nnoremap <Right> <nop>
+inoremap <esc> <nop>
