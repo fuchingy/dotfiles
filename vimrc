@@ -127,3 +127,20 @@ nnoremap <Down> <nop>
 nnoremap <Left> <nop>
 nnoremap <Right> <nop>
 inoremap <esc> <nop>
+
+" Search without moving cursor
+nnoremap * :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
+
+" Avoid connect to X server to reduce vim start-up time
+set clipboard=exclude:.*
+
+" Draw a line at 160 for line-length coding style for python
+fun! ToggleCC()
+  if &cc == ''
+    set cc=160
+  else
+    set cc=
+  endif
+endfun
+
+nnoremap <F2> :call ToggleCC()<CR>
