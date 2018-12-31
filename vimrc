@@ -134,10 +134,10 @@ nnoremap * :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
 " Avoid connect to X server to reduce vim start-up time
 set clipboard=exclude:.*
 
-" Draw a line at 160 for line-length coding style for python
+" Draw a line at 130 for line-length coding style for python
 fun! ToggleCC()
   if &cc == ''
-    set cc=160
+    set cc=130
   else
     set cc=
   endif
