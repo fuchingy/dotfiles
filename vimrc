@@ -24,6 +24,9 @@ Plugin 'chazy/cscope_maps'
 "Plugin 'scrooloose/syntastic'
 "   markdown highlight
 Plugin 'gabrielelana/vim-markdown'
+"   typescript highlight
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
 
 """ Plugin Setting
 nnoremap <silent> <F5> :NERDTreeToggle<CR>
@@ -76,6 +79,10 @@ nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 " 
 " let g:syntastic_python_checkers = ["pyflakes"]
 " let g:syntastic_asm_checkers = ["aarch64-gcc"]
+
+" typescript highlight
+" set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx,*.ts set filetype=typescript.tsx
 
 """ Appearance """
 " set cursorline
