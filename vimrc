@@ -98,6 +98,7 @@ set backspace=indent,eol,start
 
 " Layout
 :noremap <F3> :set number! number?<CR>
+set splitright
 
 " Searching.
 set hlsearch
