@@ -23,7 +23,8 @@ Plugin 'chazy/cscope_maps'
 "   general lint
 "Plugin 'scrooloose/syntastic'
 "   markdown highlight
-Plugin 'gabrielelana/vim-markdown'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 "   typescript highlight
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
@@ -79,6 +80,10 @@ nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 " 
 " let g:syntastic_python_checkers = ["pyflakes"]
 " let g:syntastic_asm_checkers = ["aarch64-gcc"]
+
+" markdown highlight
+" Disable folding
+let g:vim_markdown_folding_disabled = 1
 
 " typescript highlight
 " set filetypes as typescript.tsx
