@@ -5,7 +5,7 @@
 "   > vim +PluginInstall +qall
 " Tips, use BundleInstall to install
 set nocompatible
-filetype off
+filetype plugin on
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()    
 
@@ -82,6 +82,7 @@ nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 " typescript highlight
 " set filetypes as typescript.tsx
+" http://vimdoc.sourceforge.net/htmldoc/filetype.html#new-filetype
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*.ts set filetype=typescript.tsx
 
 """ Appearance """
@@ -95,10 +96,9 @@ set wildignore+=*.pyc,*.pyo,.svn,.git,.bzr,
 
 " Default indentation.
 set expandtab
-set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-" set autoindent
+set noautoindent
 
 " Fix backspace delete
 set backspace=indent,eol,start
