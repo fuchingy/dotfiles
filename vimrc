@@ -163,3 +163,5 @@ fun! ToggleCC()
 endfun
 
 nnoremap <F2> :call ToggleCC()<CR>
+" Highlight without moving cursor
+nnoremap * :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
