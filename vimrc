@@ -141,6 +141,12 @@ nnoremap <Left> <nop>
 nnoremap <Right> <nop>
 inoremap <esc> <nop>
 
+" Switch tab
+nnoremap gt <nop>
+nnoremap gT <nop>
+nnoremap <C-l> :tabn<CR>
+nnoremap <C-h> :tabp<CR>
+
 " Search without moving cursor
 nnoremap * :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
 
